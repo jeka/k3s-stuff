@@ -17,7 +17,7 @@ local kp =
         replicas: 1,
       },
       k3s+:: {
-      master_ips:['172.31.2.229'],
+      master_ips: std.extVar("master_ip"),
       },
       alertmanager+:: {
         replicas: 1,

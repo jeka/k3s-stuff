@@ -11,6 +11,10 @@ set -o pipefail
 rm -rf manifests
 mkdir -p manifests/setup
 
-                                               # optional, but we would like to generate yaml, not json
-jsonnet -J vendor -m manifests "${1-example.jsonnet}" | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml; rm -f {}' -- {}
+# TODO: Adapt to HA setup (multiple masters)
+master_ip="['$(kubectl get nodes -l node-role.kubernetes.io/master -o jsonpath='{.items[0].status.addresses[?(@.type=="InternalIP")].address}')']"
+
+jsonnet --ext-code master_ip=$master_ip -J vendor -m manifests "${1-prometheus.jsonnet}" \
+    | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml; rm -f {}' -- {}
+    # ^^^ is optional, but we would like to generate yaml, not json
 
