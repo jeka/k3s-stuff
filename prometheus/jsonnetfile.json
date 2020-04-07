@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "dependencies": [
+    {
+      "source": {
+        "git": {
+          "remote": "https://github.com/coreos/kube-prometheus",
+          "subdir": "jsonnet/kube-prometheus"
+        }
+      },
+      "version": "release-0.4"
+    },
+    {
+      "source": {
+        "git": {
+          "remote": "https://github.com/jeka/k3s-stuff",
+          "subdir": "jsonnet/k3s"
+        }
+      },
+      "version": "master"
+    },
+    {
+      "source": {
+        "git": {
+          "remote": "https://github.com/lensapp/lens",
+          "subdir": "jsonnet"
+        }
+      },
+      "version": "master",
+      "name": "lens"
+    }
+  ],
+  "legacyImports": true
+}
