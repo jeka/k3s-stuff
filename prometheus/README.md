@@ -17,7 +17,7 @@ Set your default kubernetes cluster context accordingly pointing to the target k
 
 ### Installation
 
-* `bash $ jb update`
+* `$ jb update`
 * `$ ./build`
 * `$ kubectl apply -f manifests/setup`
 *  Wait few seconds as previous commands creates all the CRDs needed by prometheus-operator
